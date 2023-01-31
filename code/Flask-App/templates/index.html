@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .button1 {width: 250px; color:blue; background-color:orange; height:25px;}
+    .boxed {
+        border: 3px solid white ;width:80%;height:500px;overflow:auto;position:relative;top: 75px;left: 150px;
+        }
+    .boxed1 {
+        border: 3px solid blue ;width:24%;height:400px;overflow:auto;position:relative;top: -700px;left: 0px;
+        }
+    .boxed2 {
+        padding: 10px; border: 2px solid white;top: 100px;left: 0px;
+        }
+    .bg-image {
+        background-image: url("https://graphicriver.img.customer.envatousercontent.com/files/1501455/template.jpg?auto=compress%2Cformat&fit=crop&crop=top&w=590&h=590&s=b795436d8d6d4dcbcd34613e889a2ae0");
+        backdrop-filter: blur(25px);
+        /* background-position: top; */
+        background-size: cover;
+        height: 100vh;
+        width: 99%;
+        }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title >Propaganda Detection</title>
+</head>
+
+<body class="bg-image">
+    <h1 style="color:white;">Propaganda Detection Application</h1>
+
+    <form action = '/propaganda_techiques' method="POST">
+        <input style="text-align:center;background-color:orange;height:50px;font-size:18px;" type="text" name="prop_text" size="150" placeholder="Enter Text">
+        <br>
+        <br>
+        <button style="font-size:15px;width:265px" class="button1" type="submit" name="submit_button" value="action1">View Train Propaganda Techniques</button>
+        <button style="font-size:15px;width:265px" class="button1" type="submit" name="submit_button" value="action5">View Dev Propaganda Techniques</button>
+        <button style="font-size:15px;width:265px" class="button1" type="submit" name="submit_button" value="action2">Check for Propaganda</button>
+        <button style="font-size:15px;width:265px" class="button1" type="submit" name="submit_button" value="action3">Identify Span</button>
+        <button style="font-size:15px;width:265px" class="button1" type="submit" name="submit_button" value="action4">Identify Propaganda</button>
+    </form>
+
+
+    {% for element in techniques.keys()%}
+
+    <div class="boxed">
+    <p style="left:375px; position:relative; font-size:40px;color:rgb(88, 55, 55)"><strong>{{element}}</strong></p>
+    {% for elem in techniques[element]%}
+        <h1 style="color:rgb(100, 225, 100)" class="boxed2">{{elem}}</h1>
+    {% endfor %}
+    </div>
+    <br>
+    {% endfor %}
+    <!-- rgb(95, 34, 174) -->
+</body>
+</html>
